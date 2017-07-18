@@ -370,13 +370,13 @@ public class CustomPopupWindow {
   	public int getWidth() {
         if (mPopupWindow != null)
             return mContentView.getMeasuredWidth();
-        return -1;
+        return 0;
     }
 
     public int getHeight() {
         if (mPopupWindow != null)
             return mContentView.getMeasuredHeight();
-        return -1;
+        return 0;
     }
 
     public void dismiss() {

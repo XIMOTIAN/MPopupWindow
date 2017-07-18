@@ -2,7 +2,7 @@
 
 先看效果图
 
-![](demo17.gif)
+![](https://raw.githubusercontent.com/angelOnly/MPopupWindow/master/demo17.gif)
 
 PopupWindow 的简单使用
 

@@ -519,5 +519,3 @@ public class CustomPopupWindow {
 	}
 }
 ```
-
-详情查看 [GitHub](https://github.com/angelOnly/MPopupWindow)

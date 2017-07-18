@@ -134,7 +134,7 @@ public class CustomPopupWindow {
     }
 
     /**
-     * 显示在控件的右方
+     * 全屏弹出
      *
      * @param parent parent
      */
@@ -184,14 +184,13 @@ public class CustomPopupWindow {
     public static class Builder {
         public int mLayoutResId;//布局id
         public int mWidth, mHeight;//弹窗的宽和高
-        public boolean mIsShowBg, mIsShowAnim;
-        public int mAnimationStyle;//动画Id
-        public boolean mIsTouchable = false;
-        private ViewClickListener mListener;
-        private Context mContext;
-        private Drawable mDrawable;
-        private boolean mTouchable;
-        private boolean mFocusable;
+        public int mAnimationStyle;//动画样式Id
+        private ViewClickListener mListener;//子View监听回调
+        private Context mContext;//上下文
+        private Drawable mDrawable;//Drawable用于设置背景
+        private boolean mTouchable = true;//是否响应touch事件
+        private boolean mFocusable = false;//是否获取焦点
+        private boolean mOutsideTouchable = false;//设置外部是否可点击
 
         public CustomPopupWindow build(Context context) {
             this.mContext = context;
@@ -221,18 +220,16 @@ public class CustomPopupWindow {
             if (mFocusable)
                 mPopupWindow.setFocusable(mFocusable);
 
-            if (mIsTouchable)
-                mPopupWindow.setOutsideTouchable(mIsTouchable);//设置outside可点击
+            if (mOutsideTouchable)
+                mPopupWindow.setOutsideTouchable(mOutsideTouchable);
 
-            if (mIsShowBg) {
-                if (mDrawable != null) {
-                    mPopupWindow.setBackgroundDrawable(mDrawable);
-                } else {
-                    mPopupWindow.setBackgroundDrawable(new ColorDrawable());
-                }
+            if (mDrawable != null) {
+                mPopupWindow.setBackgroundDrawable(mDrawable);
+            } else {
+                mPopupWindow.setBackgroundDrawable(new ColorDrawable());
             }
 
-            if (mIsShowAnim) {
+            if (mAnimationStyle != -1) {
                 mPopupWindow.setAnimationStyle(mAnimationStyle);
             }
 
@@ -291,6 +288,7 @@ public class CustomPopupWindow {
 
         /**
          * 设置子View点击事件回调
+         *
          * @param listener ViewClickListener
          * @return Builder
          */
@@ -302,27 +300,29 @@ public class CustomPopupWindow {
 
         /**
          * 设置背景
+         *
          * @param drawable
          * @return Builder
          */
         public Builder setBackgroundDrawable(Drawable drawable) {
-            mIsShowBg = true;
             mDrawable = drawable;
             return this;
         }
 
         /**
          * 是否可点击Outside消失
+         *
          * @param touchable 是否可点击
          * @return Builder
          */
         public Builder setOutsideTouchable(boolean touchable) {
-            mIsTouchable = touchable;
+            mOutsideTouchable = touchable;
             return this;
         }
 
         /**
          * 是否相应Touch事件
+         *
          * @param touchable 是否可点击
          * @return Builder
          */
@@ -333,16 +333,17 @@ public class CustomPopupWindow {
 
         /**
          * 设置动画
+         *
          * @return Builder
          */
         public Builder setAnimationStyle(int animationStyle) {
-            mIsShowAnim = true;
             mAnimationStyle = animationStyle;
             return this;
         }
 
         /**
          * 是否获取焦点
+         *
          * @param focusable
          * @return
          */

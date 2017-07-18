@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 /**
  * Created by dali on 2017/7/15.
@@ -36,7 +35,7 @@ public class PopupAdapter extends RecyclerView.Adapter<PopupAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.choice_text.setOnClickListener(new View.OnClickListener() {
+        holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (myItemClickListener != null) {
@@ -53,12 +52,10 @@ public class PopupAdapter extends RecyclerView.Adapter<PopupAdapter.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView;
-        TextView choice_text;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.img);
-            choice_text = (TextView) itemView.findViewById(R.id.choice_text);
         }
     }
 }

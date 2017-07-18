@@ -12,6 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import static com.dali.admin.mpopupwindow.R.id.btn_cancel;
+import static com.dali.admin.mpopupwindow.R.id.btn_select_photo;
+import static com.dali.admin.mpopupwindow.R.id.btn_take_photo;
+import static com.dali.admin.mpopupwindow.R.id.recycle_view;
+
 public class PopupWindowActivity extends AppCompatActivity implements CustomPopupWindow.ViewClickListener {
 
     private CustomPopupWindow popupWindow;
@@ -29,6 +34,7 @@ public class PopupWindowActivity extends AppCompatActivity implements CustomPopu
                 .setWidthAndHeight(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT)
                 .setAnimationStyle(R.style.AnimUp)
                 .setViewOnclickListener(this)
+                .setTouchable(true)
                 .build(this)
                 .showDownPop(view);
 //        popupWindow.showAsDropDown(view);
@@ -88,14 +94,14 @@ public class PopupWindowActivity extends AppCompatActivity implements CustomPopu
         //获得PopupWindow布局里的View
         switch (layoutResId) {
             case R.layout.popup_down:
-                RecyclerView recycle_view = (RecyclerView) view.findViewById(R.id.recycle_view);
-                recycle_view.setLayoutManager(new LinearLayoutManager(this));
+                RecyclerView recyclerView = (RecyclerView) view.findViewById(recycle_view);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 PopupAdapter mAdapter = new PopupAdapter(this);
-                recycle_view.setAdapter(mAdapter);
+                recyclerView.setAdapter(mAdapter);
                 mAdapter.setOnItemClickListener(new PopupAdapter.MyOnclickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        toast("position is " + position);
+                        toast("点赞+" + position);
                         if (popupWindow != null) {
                             popupWindow.dismiss();
                         }
@@ -103,10 +109,10 @@ public class PopupWindowActivity extends AppCompatActivity implements CustomPopu
                 });
                 break;
             case R.layout.popup_up:
-                Button btn_take_photo = (Button) view.findViewById(R.id.btn_take_photo);
-                Button btn_select_photo = (Button) view.findViewById(R.id.btn_select_photo);
-                Button btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
-                btn_take_photo.setOnClickListener(new View.OnClickListener() {
+                Button btnTakePhoto = (Button) view.findViewById(btn_take_photo);
+                Button btnSelectPhoto = (Button) view.findViewById(btn_select_photo);
+                Button btnCancel = (Button) view.findViewById(btn_cancel);
+                btnTakePhoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         toast("拍照");
@@ -115,7 +121,7 @@ public class PopupWindowActivity extends AppCompatActivity implements CustomPopu
                         }
                     }
                 });
-                btn_select_photo.setOnClickListener(new View.OnClickListener() {
+                btnSelectPhoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         toast("相册选取");
@@ -124,7 +130,7 @@ public class PopupWindowActivity extends AppCompatActivity implements CustomPopu
                         }
                     }
                 });
-                btn_cancel.setOnClickListener(new View.OnClickListener() {
+                btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (popupWindow != null) {

@@ -14,12 +14,4 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:src="@mipmap/good_checked"/>
-
-    <TextView
-        android:id="@+id/choice_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="点赞"
-        android:textColor="@color/light_grey_color"/>
-
 </LinearLayout>

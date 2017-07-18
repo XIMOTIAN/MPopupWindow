@@ -198,7 +198,7 @@ private void toast(String str) {
 
 ### 2.5、运行效果
 
-![](demo12.gif)
+![](https://raw.githubusercontent.com/angelOnly/MPopupWindow/master/demo12.gif)
 
 > ##### 注意：如果代码中设置了 PopupWindow 的宽高，则以代码中的宽高为准，并不会以布局中的宽高为准。
 
@@ -208,7 +208,7 @@ private void toast(String str) {
 
 为 popupWindow 添加动画效果或者阴影
 
-![](demo11.gif)
+![](https://raw.githubusercontent.com/angelOnly/MPopupWindow/master/demo11.gif)
 
 效果中明显看到有阴影，而添加阴影效果只需要一个函数即可。
 
@@ -277,7 +277,7 @@ public void showPop(View view){
 
 设置 PopupWindow 是否响应 touch 事件，默认为 true。若为 false，则 view 将不可点击
 
-![](demo13.gif)
+![](https://raw.githubusercontent.com/angelOnly/MPopupWindow/master/demo13.gif)
 
 ### 3.3、setFocusable(boolean focusable)
 
@@ -288,7 +288,7 @@ public void showPop(View view){
 popupWindow.setFocusable(true);
 ```
 
-![](demo14.gif)
+![](https://raw.githubusercontent.com/angelOnly/MPopupWindow/master/demo14.gif)
 
 ### 3.4、setOutsideTouchable(boolean touchable)
 
@@ -299,7 +299,7 @@ popupWindow.setFocusable(true);
 popupWindow.setOutsideTouchable(true);
 ```
 
-![](demo15.gif)
+![](https://raw.githubusercontent.com/angelOnly/MPopupWindow/master/demo15.gif)
 
 ### 3.5、setBackgroundDrawable(Drawable background)
 
@@ -309,6 +309,6 @@ popupWindow.setOutsideTouchable(true);
 popupWindow.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
 ```
 
-![](demo16.gif)
+![](https://raw.githubusercontent.com/angelOnly/MPopupWindow/master/demo16.gif)
 
 还有很多方法没有讲解，步骤差不多，感兴趣的查看源码吧。

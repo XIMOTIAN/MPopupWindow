@@ -182,9 +182,9 @@ public class CustomPopupWindow {
 
 
     public static class Builder {
-        public int mLayoutResId;//布局id
-        public int mWidth, mHeight;//弹窗的宽和高
-        public int mAnimationStyle;//动画样式Id
+        private int mLayoutResId;//布局id
+        private int mWidth, mHeight;//弹窗的宽和高
+        private int mAnimationStyle;//动画样式Id
         private ViewClickListener mListener;//子View监听回调
         private Context mContext;//上下文
         private Drawable mDrawable;//Drawable用于设置背景

@@ -49,6 +49,35 @@ public void showDownPop(View view) {
 //        popupWindow.showAsDropDown(view);
 }
 ```
+#### 子 View 点击事件
+
+```java
+@Override
+public void getChildView(final View view, int layoutResId) {
+    //获得PopupWindow布局里的View
+    switch (layoutResId) {
+        //......
+        case R.layout.popup_right_or_left:
+            ImageView good = (ImageView) view.findViewById(R.id.good);
+            ImageView collection = (ImageView) view.findViewById(R.id.collection);
+            good.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toast("点赞成功");
+                    popupWindow.dismiss();
+                }
+            });
+            collection.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toast("收藏成功");
+                    popupWindow.dismiss();
+                }
+            });
+            break;
+    }
+}
+```
 
 #### CustomPopupWindow 设置动画
 
